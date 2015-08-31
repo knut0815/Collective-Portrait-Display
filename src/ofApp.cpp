@@ -3,39 +3,23 @@
 void ofApp::setup()
 {
     m_imagesPerRow = sqrt(NUM_TO_DISPLAY);
-    m_path = "/Users/MichaelWalczyk/Documents/openFrameworks/apps/myApps/collectivePortrait_01/bin/data/screenshots";
-    m_dir.open(m_path);
-    m_dir.setWriteable(true);
-    m_dir.allowExt("png");
-    m_dir.listDir();
+//    m_path = "/Users/Ring/Documents/openFrameworks/apps/myApps/Collective-Portrait-Motion Only/bin/data/screenshots";
+    m_path = "/Users/Ring/Desktop/Faces";
+    m_watchFolder.start(m_path, 2000);
+    ofAddListener(m_watchFolder.fileAdded, this, &ofApp::watchFolderFileAdded);
+    m_watchFolder.allowExt("png");
     
-    cout << m_dir.numFiles() << endl;
-    
-    m_currentNumFiles = m_dir.numFiles();
-    
-    updateImages();
+    //m_images.resize(NUM_TO_DISPLAY);
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-    int numFiles = m_dir.numFiles();
-    if (m_currentNumFiles != numFiles)
+    for (int i = 0; i < m_images.size(); i++)
     {
-        updateImages();
-        m_currentNumFiles = m_dir.numFiles();
-    }
-    
-    for (int i = 0; i < m_threadedImages.size(); i++)
-    {
-        if (m_threadedImages[i]->m_isLoaded)
+        if (i < m_images.size())
         {
-            if (m_images.size() <= i) {
-                m_images.resize(i+1);
-            }
-            m_images[i].getPixelsRef() = m_threadedImages[i]->m_image;
-            m_images[i].update();
-            m_threadedImages[i]->m_isLoaded = false;
+           
         }
     }
 }
@@ -43,32 +27,50 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+    ofBackground(ofColor::fromHex(0x053e69));
+    ofSetColor(ofColor::white);
     for (int i = 0; i < m_images.size(); i++) {
-        m_images[i].draw((i % m_imagesPerRow) * IMG_DISPLAY_WIDTH,
-                                          (i / m_imagesPerRow) * IMG_DISPLAY_HEIGHT,
-                                          IMG_DISPLAY_WIDTH,
-                                          IMG_DISPLAY_HEIGHT);
+        if (m_images[i]->isAllocated()) {
+        m_images[i]->drawSubsection(
+                                   (i % 3) * IMG_DISPLAY_WIDTH + ((i % 3) + 1) * IMG_SPACER,
+                                   (i / 3) * IMG_DISPLAY_HEIGHT + ((i / 3) + 1) * IMG_SPACER,
+                                   IMG_DISPLAY_WIDTH,               //How wide to draw the final image
+                                   IMG_DISPLAY_HEIGHT,              //How tall to draw the final image
+                                   IMG_DISPLAY_WIDTH - 100,         //Where to start cropping (x)
+                                   IMG_DISPLAY_HEIGHT - 200,        //Where to start cropping (y)
+                                   IMG_DISPLAY_WIDTH*2,             //The source width of the cropped area
+                                   IMG_DISPLAY_HEIGHT*2             //The source height of the cropped area
+                                   );
+        }
     }
+    
+#ifdef DEBUG
+    ofSetColor(ofColor::red);
+    ofDrawBitmapString("FPS: " + ofToString(ofGetFrameRate()) + "\n" +
+                       "Num Images: " + ofToString(m_images.size()), 10, 10);
+#endif
 }
 
-void ofApp::updateImages()
+
+
+void ofApp::watchFolderFileAdded(string &fileName)
 {
-    m_threadedImages.clear();
-    m_images.clear();
-    m_dir.sort();
-    int limit = min(m_dir.numFiles(), 9);
+    //m_images.clear();
+    //m_watchFolder._watchDir.sort();
     
-    for (int i = 0; i < limit; i++) {
-        int indexFromEnd = (m_dir.numFiles() - 1) - i;
-#ifdef DEBUG
-        cout << m_dir.getPath(indexFromEnd) << endl;
-#endif
-        //ofImage img;
-        //img.loadImage(m_dir.getPath(indexFromEnd));
-        //m_images.push_back(img);
-        m_threadedImages.push_back(new ImageLoader);
-        m_threadedImages.back()->load(m_dir.getPath(indexFromEnd));
+    m_images.push_front(new ofImage);
+    
+    if (m_images.size() > NUM_TO_DISPLAY)
+    {
+        m_images.pop_back();
     }
+    string addedPath = m_watchFolder._watchDir.getAbsolutePath() + "/" + fileName;
+    
+#ifdef DEBUG
+    cout << "File " << fileName << " added\n";
+    cout << addedPath << endl;
+#endif
+    m_images.front()->loadImage(addedPath);
 }
 
 

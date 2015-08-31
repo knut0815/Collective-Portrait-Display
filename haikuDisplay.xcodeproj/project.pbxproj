@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27CF9E491B90D7C2001997A1 /* ofxMtlWatchFolder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27CF9E471B90D7C2001997A1 /* ofxMtlWatchFolder.cpp */; };
 		8CF01AAE1B87C6BF00952827 /* imageLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CF01AAC1B87C6BF00952827 /* imageLoader.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -60,6 +61,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27CF9E471B90D7C2001997A1 /* ofxMtlWatchFolder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlWatchFolder.cpp; sourceTree = "<group>"; };
+		27CF9E481B90D7C2001997A1 /* ofxMtlWatchFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMtlWatchFolder.h; sourceTree = "<group>"; };
 		8CF01AAC1B87C6BF00952827 /* imageLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imageLoader.cpp; sourceTree = "<group>"; };
 		8CF01AAD1B87C6BF00952827 /* imageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageLoader.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -114,9 +117,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27CF9E451B90D7C2001997A1 /* ofxMtlWatchFolder */ = {
+			isa = PBXGroup;
+			children = (
+				27CF9E461B90D7C2001997A1 /* src */,
+			);
+			name = ofxMtlWatchFolder;
+			sourceTree = "<group>";
+		};
+		27CF9E461B90D7C2001997A1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				27CF9E471B90D7C2001997A1 /* ofxMtlWatchFolder.cpp */,
+				27CF9E481B90D7C2001997A1 /* ofxMtlWatchFolder.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxMtlWatchFolder/src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				27CF9E451B90D7C2001997A1 /* ofxMtlWatchFolder */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -291,6 +313,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				8CF01AAE1B87C6BF00952827 /* imageLoader.cpp in Sources */,
+				27CF9E491B90D7C2001997A1 /* ofxMtlWatchFolder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +471,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -533,6 +557,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>76DDE087-9E07-4A21-96A3-01AFE9E6C2E4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>haikuDisplay</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>61CEFDC8F3DA3A90F685AA376E257B9BB9F1C960</key>
+		<string>https://github.com/morethanlogic/ofxMtlWatchFolder.git</string>
+		<key>8557255023C0F138680F25BE8A557C0107C959E1</key>
+		<string>https://github.com/mwalczyk/Collective-Portrait-Display.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>haikuDisplay.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>61CEFDC8F3DA3A90F685AA376E257B9BB9F1C960</key>
+		<string>../../../addons/ofxMtlWatchFolder</string>
+		<key>8557255023C0F138680F25BE8A557C0107C959E1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mwalczyk/Collective-Portrait-Display.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8557255023C0F138680F25BE8A557C0107C959E1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8557255023C0F138680F25BE8A557C0107C959E1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Collective-Portrait-Display</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>61CEFDC8F3DA3A90F685AA376E257B9BB9F1C960</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxMtlWatchFolder</string>
+		</dict>
+	</array>
+</dict>
+</plist>
